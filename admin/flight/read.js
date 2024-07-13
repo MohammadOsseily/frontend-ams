@@ -3,7 +3,6 @@ function fetchFlights() {
     axios.get('http://localhost/backend-ams/api/flight/read.php')
         .then(response => {
             console.log(response.data); // Log the response to check its structure
-
             if (response.data && response.data.flights) {
                 const flights = response.data.flights;
                 const flightsList = document.getElementById('flights-list');
@@ -12,13 +11,13 @@ function fetchFlights() {
                 flights.forEach(flight => {
                     const flightDiv = document.createElement('div');
                     flightDiv.innerHTML = `
-                        <a href="singleFlight.html?id=${flight.id}">
+                        <a href="../../user/flight/single-flight.html?id=${flight.id}">
                             Flight Number: ${flight.flight_number || 'No Flight Number'} - 
                             Departure: ${flight.departure_time || 'No Departure Time'} from ${flight.departure_airport_id || 'No Departure Airport'} to ${flight.arrival_airport_id || 'No Arrival Airport'} - 
                             Arrival: ${flight.arrival_time || 'No Arrival Time'} - 
                             Available Seats: ${flight.capacity}
                         </a>
-                        <a href="updateFlight.html?id=${flight.id}">Update</a>
+                        <a href="update.html?id=${flight.id}">Update</a>
                         <a href="#" onclick="deleteFlight(${flight.id})">Delete</a>
                     `;
                     flightsList.appendChild(flightDiv);
