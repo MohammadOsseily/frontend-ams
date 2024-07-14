@@ -12,7 +12,7 @@ axios.get('http://localhost/backend-ams/api/flight/read.php')
 
                 const flightDiv = document.createElement('div');
                 flightDiv.innerHTML = `
-                    <a href="single-flight.html?id=${flight.flight_id}">
+                    <a href="single-flight.html?id=${flight.id}">
                         Flight Number: ${flight.flight_number || 'No Flight Number'} - 
                         Departure: ${flight.departure_time || 'No Departure Time'} from ${flight.departure_airport_id || 'No Departure Airport'} to ${flight.arrival_airport_id || 'No Arrival Airport'} - 
                         Arrival: ${flight.arrival_time || 'No Arrival Time'}
