@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Flight</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="../airport/read.html">Airports</a>
+        <a href="../flight/read.html">Flights</a>
+        <a href="../hotel/read.html">Hotels</a>
+        <a href="../taxi/read.html">Taxis</a>
+        <a href="../users/read.html">Users</a>
+    </div>
+    <div class="content">
     <h1>Update Flight</h1>
     <form id="update-flight-form">
         <input type="hidden" id="flight_id" name="flight_id">
@@ -35,7 +44,7 @@
 
         <button type="submit">Update Flight</button>
     </form>
-
+    </div>
     <script src="update.js"></script>
 </body>
 </html>
