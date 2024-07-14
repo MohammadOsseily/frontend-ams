@@ -74,7 +74,7 @@ axios.post('http://localhost/backend-ams/api/hotel_bookings/create.php', booking
     .then(response => {
         if (response.data && response.data.status === 'success') {
             alert('Hotel booked successfully!');
-            window.location.reload();
+            window.location.href = "list-of-hotel-bookings.html";
         } else {
             alert('Failed to book hotel. ' + response.data.message);
         }
@@ -95,7 +95,7 @@ function cancelBooking() {
         .then(response => {
             if (response.data && response.data.status === 'success') {
                 alert('Booking cancelled successfully!');
-                window.location.reload();
+                window.location.href = "list-of-hotel-bookings.html";
             } else {
                 alert('Failed to cancel booking. ' + response.data.message);
             }
