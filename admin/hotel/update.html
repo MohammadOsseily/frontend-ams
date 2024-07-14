@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Hotel</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Update Hotel</h1>
+    <form id="update-hotel-form">
+        <input type="hidden" id="hotel_id" name="hotel_id">
+
+        <label for="name">Hotel Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="price_per_night">Price per Night:</label>
+        <input type="number" id="price_per_night" name="price_per_night" required><br>
+
+        <label for="available_rooms">Available Rooms:</label>
+        <input type="number" id="available_rooms" name="available_rooms" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br>
+
+        <button type="submit">Update Hotel</button>
+    </form>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const hotelId = urlParams.get('id');
+
+        function fetchHotelDetails() {
+            axios.get(`http://localhost/testing/routes/hotels/read_one.php?hotel_id=${hotelId}`)
+                .then(response => {
+                    if (response.data && response.data.data) {
+                        const hotel = response.data.data;
+                        document.getElementById('hotel_id').value = hotel.hotel_id;
+                        document.getElementById('name').value = hotel.name;
+                        document.getElementById('price_per_night').value = hotel.price_per_night;
+                        document.getElementById('available_rooms').value = hotel.available_rooms;
+                        document.getElementById('city').value = hotel.city;
+                        document.getElementById('address').value = hotel.address;
+                    } else {
+                        console.error('No hotel found in response', response.data);
+                    }
+                })
+                .catch(error => {
+                    console.error('There was an error retrieving the hotel!', error);
+                });
+        }
+
+        document.getElementById('update-hotel-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const hotelData = {
+                hotel_id: document.getElementById('hotel_id').value,
+                name: document.getElementById('name').value,
+                price_per_night: document.getElementById('price_per_night').value,
+                available_rooms: document.getElementById('available_rooms').value,
+                city: document.getElementById('city').value,
+                address: document.getElementById('address').value
+            };
+
+            axios.post('http://localhost/testing/routes/hotels/update.php', hotelData)
+                .then(response => {
+                    if (response.data.status === 'success') {
+                        alert('Hotel updated successfully!');
+                        window.location.href = 'adminListHotels.html';
+                    } else {
+                        alert('Failed to update hotel. ' + response.data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('There was an error updating the hotel!', error);
+                    alert('Failed to update hotel. Please try again later.');
+                });
+        });
+
+        fetchHotelDetails();
+    </script>
+</body>
+</html>

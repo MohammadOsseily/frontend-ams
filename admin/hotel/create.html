@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Hotel</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form id="hotelForm">
+        <input type="text" name="name" placeholder="Hotel Name" required>
+        <input type="text" name="city" placeholder="City" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <input type="number" name="price_per_night" placeholder="Price per Night" required>
+        <input type="number" name="available_rooms" placeholder="Available Rooms" required>
+        <button type="button" onclick="createHotel()">Create Hotel</button>
+    </form>
+
+    <script>
+        function createHotel() {
+            const form = document.getElementById('hotelForm');
+            if (form.checkValidity()) {
+                const formData = {
+                    name: form.elements['name'].value,
+                    city: form.elements['city'].value,
+                    address: form.elements['address'].value,
+                    price_per_night: parseInt(form.elements['price_per_night'].value),
+                    available_rooms: parseInt(form.elements['available_rooms'].value)
+                };
+
+                // Validate numeric fields
+                if (isNaN(formData.price_per_night) || isNaN(formData.available_rooms)) {
+                    alert('Price per Night and Available Rooms must be numeric values.');
+                    return;
+                }
+
+                axios.post('http://localhost/backend-ams/api/hotel/create.php', formData)
+                    .then(response => {
+                        console.log(response.data); 
+                        if (response.data.status === 'success') {
+                            alert('Hotel created successfully!');
+                            window.location.href = 'read.html'; // Redirect to read.html on success
+                        } else {
+                            alert('Failed to create hotel. ' + response.data.message);
+                        }
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error creating hotel:', error); // Handle error
+                        alert('Error creating hotel. Please try again.');
+                    });
+            } else {
+                alert('Please fill out all required fields.');
+            }
+        }
+    </script>
+</body>
+</html>
