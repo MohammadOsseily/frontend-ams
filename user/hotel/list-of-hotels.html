@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Hotels</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Hotels List</h1>
+    <div id="hotels-list"></div>
+
+    <script>
+        axios.get('http://localhost/backend-ams/api/hotel/read.php')
+            .then(response => {
+                if (response.data && response.data.hotels) {
+                    const hotels = response.data.hotels;
+                    const hotelsList = document.getElementById('hotels-list');
+                    hotels.forEach(hotel => {
+                        // Create a clickable link for each hotel
+                        const hotelLink = document.createElement('a');
+                        hotelLink.textContent = `${hotel.name} - ${hotel.city} - ${hotel.address} - $${hotel.price_per_night}`;
+                        hotelLink.href = `single-hotel.html?id=${hotel.id}`;
+                        hotelLink.style.display = 'block';
+                        hotelLink.style.marginBottom = '10px';
+                        hotelsList.appendChild(hotelLink);
+                    });
+                } else {
+                    console.error('No hotels found in response', response.data);
+                }
+            })
+            .catch(error => {
+                console.error('There was an error retrieving the hotels!', error);
+            });
+    </script>
+</body>
+</html>
