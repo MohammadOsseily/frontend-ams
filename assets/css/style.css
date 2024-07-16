@@ -39,7 +39,7 @@ body {
 }
 
 .content {
-    margin-left: 220px; /* Adjust content margin to account for fixed sidebar */
+    margin-left: 220px; 
     padding: 20px;
     background-color: #ecf0f1;
     flex: 1;
@@ -51,7 +51,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-#flights-list .flight-item {
+#flights-list .flight-item, #hotels-list .hotel-item {
     background-color: #fff;
     padding: 15px;
     margin: 10px 0;
@@ -62,15 +62,15 @@ h1 {
     align-items: center;
 }
 
-#flights-list .flight-item a {
+#flights-list .flight-item a, #hotels-list .hotel-item a {
     color: #2c3e50;
     text-decoration: none;
     margin-right: 15px;
 }
 
-#flights-list .flight-item a:hover {
-    color: #2c3e50; /* Keep the color the same on hover */
-    text-decoration: none; /* Remove underline on hover */
+#flights-list .flight-item a:hover, #hotels-list .hotel-item a:hover {
+    color: #2c3e50; 
+    text-decoration: none; 
 }
 
 .admin-actions {

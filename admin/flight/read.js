@@ -1,11 +1,10 @@
 function fetchFlights() {
     axios.get('http://localhost/backend-ams/api/flight/read.php')
         .then(response => {
-            console.log(response.data); // Log the response to check its structure
             if (response.data && response.data.flights) {
                 const flights = response.data.flights;
                 const flightsList = document.getElementById('flights-list');
-                flightsList.innerHTML = ''; // Clear previous content
+                flightsList.innerHTML = ''; 
 
                 flights.forEach(flight => {
                     const flightDiv = document.createElement('div');

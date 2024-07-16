@@ -9,6 +9,7 @@
 
                         hotels.forEach(hotel => {
                             const hotelDiv = document.createElement('div');
+                            hotelDiv.classList.add('hotel-item');
                             hotelDiv.innerHTML = `
                                 <a href="../../user/hotel/single-hotel.html?id=${hotel.id}">
                                     Hotel Name: ${hotel.name || 'No Hotel Name'} - 
@@ -16,8 +17,10 @@
                                     Available Rooms: ${hotel.available_rooms || 'No Rooms Available'} - 
                                     Price per Night: ${hotel.price_per_night || 'No Price'}
                                 </a>
-                                <a href="update.html?id=${hotel.id}">Update</a>
-                                <a href="#" onclick="deleteHotel(${hotel.id})">Delete</a>
+                                <div class="admin-actions">
+                                <a href="update.html?id=${hotel.id}" class="update-link button-link">Update</a>
+                                <a href="#" class="delete-link button-link" onclick="deleteHotel(${hotel.id})">Delete</a>
+                                </div>
                             `;
                             hotelsList.appendChild(hotelDiv);
                         });
