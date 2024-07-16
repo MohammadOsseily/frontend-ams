@@ -30,12 +30,12 @@ axios.get('http://localhost/backend-ams/api/hotel/read.php')
     }
     
 
-function filterHotels() {
-    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
-    const filteredHotels = hotels.filter(hotel => 
-        hotel.name.toLowerCase().includes(searchTerm) || 
-        hotel.city.toLowerCase().includes(searchTerm) || 
-        hotel.address.toLowerCase().includes(searchTerm)
-    );
-    displayHotels(filteredHotels);
+    function filterHotels() {
+        const searchTerm = document.getElementById('search-bar').value.toLowerCase().trim(); // Ensure lowercase and trim whitespace
+        const filteredHotels = hotels.filter(hotel => 
+            hotel.name.toLowerCase().includes(searchTerm) || 
+            hotel.city.toLowerCase().includes(searchTerm) || 
+            hotel.address.toLowerCase().includes(searchTerm)
+        );
+    displayHotels(filteredHotels);    
 }

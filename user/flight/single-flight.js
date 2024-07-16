@@ -72,7 +72,7 @@ function bookFlight() {
             console.log(response.data); // Log the entire response data
             if (response.data.status === 'success') {
                 alert('Flight booked successfully!');
-                window.location.reload();
+                window.location.href = "list-of-flight-bookings.html";
             } else {
                 alert('Failed to book flight. ' + response.data.message);
             }
