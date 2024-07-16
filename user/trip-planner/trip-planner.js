@@ -27,11 +27,13 @@ function submitForm() {
         if (data.trip_plan) {
             let formattedTripPlan = data.trip_plan;
             formattedTripPlan = formattedTripPlan.replace(/###\s(.*)/g, '<h3>$1</h3>');
+            formattedTripPlan = formattedTripPlan.replace(/##\s(.*)/g, '<h2>$1</h2>'); 
+            formattedTripPlan = formattedTripPlan.replace(/#\s(.*)/g, '<h1>$1</h1>'); 
             formattedTripPlan = formattedTripPlan.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             formattedTripPlan = formattedTripPlan.replace(/---/g, '<hr>');
             formattedTripPlan = formattedTripPlan.replace(/^- (.*)/gm, '<li>$1</li>');
 
-            tripPlanDiv.innerHTML = `<h3>Trip Plan:</h3><div>${formattedTripPlan}</div>`;
+            tripPlanDiv.innerHTML = `<div>${formattedTripPlan}</div>`;
             tripPlanDiv.style.display = 'block';
         } else {
             tripPlanDiv.innerHTML = '<h3>No valid trip found within the specified budget.</h3>';
