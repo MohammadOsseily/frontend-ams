@@ -10,11 +10,11 @@ function createHotel() {
             available_rooms: parseInt(form.elements['available_rooms'].value)
         };
 
-        // Validate numeric fields
-        if (isNaN(formData.price_per_night) || isNaN(formData.available_rooms)) {
-            alert('Price per Night and Available Rooms must be numeric values.');
-            return;
-        }
+      // Validate numeric fields
+    if (isNaN(formData.price_per_night) || formData.price_per_night <= 0 || isNaN(formData.available_rooms) || formData.available_rooms <= 0) {
+        alert('Price per Night and Available Rooms must be positive numeric values.');
+        return;
+    }
 
         axios.post('http://localhost/backend-ams/api/hotel/create.php', formData)
             .then(response => {

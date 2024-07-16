@@ -33,7 +33,6 @@ document.getElementById('create-flight-form').addEventListener('submit', functio
     const capacity = document.getElementById('capacity').value;
     const price = document.getElementById('price').value;
 
-    // Frontend validation
     if (departureAirport === arrivalAirport) {
         alert("Departure and arrival airports cannot be the same");
         return;
@@ -43,6 +42,11 @@ document.getElementById('create-flight-form').addEventListener('submit', functio
         alert("Departure time must be before arrival time");
         return;
     }
+
+    if (new Date(departureTime) < new Date()) {
+        alert("Departure time must be in the future");
+        return;
+    }    
 
     // Validate flight number format (alphanumeric and length between 1 and 10)
     if (!flightNumber.match(/^[a-zA-Z0-9]{1,10}$/)) {
@@ -57,7 +61,7 @@ document.getElementById('create-flight-form').addEventListener('submit', functio
     }
 
     // Validate price (positive float)
-    if (parseFloat(price) <= 0) {
+    if (parseFloat(price) < 1) {
         alert("Price must be a positive number");
         return;
     }
@@ -73,13 +77,11 @@ document.getElementById('create-flight-form').addEventListener('submit', functio
         price: parseFloat(price)
     };
 
-    console.log('Payload:', payload); // Check payload in console
-
     axios.post('http://localhost/backend-ams/api/flight/create.php', payload)
     .then(response => {
         if (response.data.status === 'success') {
             alert('Flight created successfully!');
-            window.location.href = 'read.html'; // Redirect to flight list after creation
+            window.location.href = 'read.html'; 
         } else {
             alert('Failed to create flight. ' + response.data.message);
         }

@@ -70,6 +70,11 @@ document.getElementById('update-flight-form').addEventListener('submit', functio
         return;
     }
 
+    if (new Date(departureTime) < new Date()) {
+        alert("Departure time must be in the future");
+        return;
+    }  
+
     // Validate flight number format (alphanumeric and length between 1 and 10)
     if (!flightNumber.match(/^[a-zA-Z0-9]{1,10}$/)) {
         alert("Flight number should be alphanumeric and up to 10 characters");

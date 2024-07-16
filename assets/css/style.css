@@ -1,29 +1,162 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
 .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
     width: 200px;
-    background-color: #333;
-    color: white;
-    padding-top: 20px;
+    background-color: #2c3e50;
+    padding: 20px;
+    color: #ecf0f1;
+    height: 100vh;
+    position: fixed; /* Fix the sidebar position */
+    top: 0;
+    left: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ecdbba;
 }
 
 .sidebar a {
     display: block;
-    padding: 10px 16px;
-    color: white;
+    color: #ecf0f1;
     text-decoration: none;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .sidebar a:hover {
-    background-color: #555;
+    background-color: #34495e;
 }
 
 .content {
-    margin-left: 200px; /* Adjust this based on sidebar width */
+    margin-left: 220px; /* Adjust content margin to account for fixed sidebar */
     padding: 20px;
+    background-color: #ecf0f1;
+    flex: 1;
 }
-.sidebar a:nth-last-child(2) {
-    margin-bottom: 150px;
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#flights-list .flight-item {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#flights-list .flight-item a {
+    color: #2c3e50;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+#flights-list .flight-item a:hover {
+    color: #2c3e50; /* Keep the color the same on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px; /* Add spacing between buttons */
+}
+
+.admin-actions a {
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.admin-actions .add-link {
+    background-color: #3498db;
+}
+
+.admin-actions .add-link:hover {
+    background-color: #2980b9;
+}
+
+.admin-actions .update-link {
+    background-color: #3498db;
+}
+
+.admin-actions .update-link:hover {
+    background-color: #2980b9;
+}
+
+.admin-actions .delete-link {
+    background-color: #e74c3c;
+}
+
+.admin-actions .delete-link:hover {
+    background-color: #c0392b;
+}
+
+a.button-link {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+a.button-link:hover {
+    background-color: #2980b9;
+    color: #fff; /* Keep the text color the same */
+    text-decoration: none; /* Remove underline */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static; /* Reset the fixed position for small screens */
+        padding: 10px 0; /* Adjust padding for better spacing */
+        text-align: center; /* Center align links */
+    }
+    
+    .sidebar a {
+        display: block; /* Ensure links are displayed as block elements */
+        width: 100%; /* Full width for each link */
+        margin: 5px 0; /* Adjust margin for spacing between links */
+    }
+    
+    .content {
+        margin-left: 0; /* Reset margin for content area */
+        padding: 10px;
+    }
+    
+    #flights-list .flight-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .admin-actions {
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
 }

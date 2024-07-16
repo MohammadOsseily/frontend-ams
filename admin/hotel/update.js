@@ -31,6 +31,13 @@ document.getElementById('update-hotel-form').addEventListener('submit', function
     const availableRooms = document.getElementById('available_rooms').value;
     const city = document.getElementById('city').value;
     const address = document.getElementById('address').value;
+
+    // Validate numeric fields
+    if (isNaN(pricePerNight) || pricePerNight <= 0 || isNaN(availableRooms) || availableRooms <= 0) {
+        alert('Price per Night and Available Rooms must be positive numeric values.');
+        return;
+    }
+
     // Prepare data for update
     const hotelData = {
         id: hotelId,
@@ -40,8 +47,9 @@ document.getElementById('update-hotel-form').addEventListener('submit', function
         city: city,
         address: address
     };
+
     // Debug console logs
-console.log('Hotel data to send:', hotelData);
+    console.log('Hotel data to send:', hotelData);
 
     // Send update request
     axios.post('http://localhost/backend-ams/api/hotel/update.php', hotelData)

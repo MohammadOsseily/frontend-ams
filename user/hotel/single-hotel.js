@@ -1,7 +1,7 @@
 
 const urlParams = new URLSearchParams(window.location.search);
 const hotelId = urlParams.get('id');
-const userId = 1; // Hardcoded user ID for now
+const userId = 12; // Hardcoded user ID for now
 
 function fetchHotelDetails() {
     axios.get(`http://localhost/backend-ams/api/hotel/read-one.php?id=${hotelId}`)
@@ -64,7 +64,7 @@ if (selectedCheckInDate >= new Date(checkOutDate)) {
 }
 
 const bookingData = {
-    user_id: 1, // Hardcoded user ID for demonstration
+    user_id: userId, // Hardcoded user ID for demonstration
     hotel_id: hotelId,
     check_in_date: checkInDate,
     check_out_date: checkOutDate

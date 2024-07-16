@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    const userId = 1; // Hardcoded for demonstration, replace with actual user ID logic
+    const userId = 12; // Hardcoded for demonstration, replace with actual user ID logic
 
     axios.get(`http://localhost/backend-ams/api/flight_bookings/read-one-user.php?user_id=${userId}`)
         .then(response => {

@@ -13,19 +13,22 @@ axios.get('http://localhost/backend-ams/api/hotel/read.php')
         console.error('There was an error retrieving the hotels!', error);
     });
 
-function displayHotels(hotels) {
-    const hotelsList = document.getElementById('hotels-list');
-    hotelsList.innerHTML = '';
-    hotels.forEach(hotel => {
-        // Create a clickable link for each hotel
-        const hotelLink = document.createElement('a');
-        hotelLink.textContent = `${hotel.name} - ${hotel.city} - ${hotel.address} - $${hotel.price_per_night}`;
-        hotelLink.href = `single-hotel.html?id=${hotel.id}`;
-        hotelLink.style.display = 'block';
-        hotelLink.style.marginBottom = '10px';
-        hotelsList.appendChild(hotelLink);
-    });
-}
+    function displayHotels(hotels) {
+        const hotelsList = document.getElementById('hotels-list');
+        hotelsList.innerHTML = ''; // Clear previous content
+    
+        hotels.forEach(hotel => {
+            const hotelDiv = document.createElement('div');
+            hotelDiv.classList.add('hotel-item'); // Add hotel-item class to the div
+            hotelDiv.innerHTML = `
+                <a href="single-hotel.html?id=${hotel.id}" class="hotel-link">
+                    Name: ${hotel.name} &nbsp;&nbsp; City: ${hotel.city} &nbsp;&nbsp; Address: ${hotel.address} &nbsp;&nbsp; Price per night: $${hotel.price_per_night}
+                </a>
+            `;
+            hotelsList.appendChild(hotelDiv); // Append each hotel div to the hotels list
+        });
+    }
+    
 
 function filterHotels() {
     const searchTerm = document.getElementById('search-bar').value.toLowerCase();

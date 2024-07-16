@@ -1,7 +1,7 @@
 
 const urlParams = new URLSearchParams(window.location.search);
 const flightId = urlParams.get('id');
-const userId = 1; // Hardcoded user ID for now
+const userId = 12; // Hardcoded user ID for now
 let departureTime;
 let capacity;
 
@@ -98,7 +98,7 @@ function cancelBooking() {
             console.log(response.data); // Log the entire response data
             if (response.data.status === 'success') {
                 alert('Booking cancelled successfully!');
-                window.location.reload();
+                window.location.href = "list-of-flight-bookings.html";
             } else {
                 alert('Failed to cancel booking. ' + response.data.message);
             }
