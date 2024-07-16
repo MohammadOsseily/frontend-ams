@@ -88,7 +88,7 @@ document.getElementById('update-flight-form').addEventListener('submit', functio
     }
 
     // Validate price (positive float)
-    if (parseFloat(price) <= 0) {
+    if (parseFloat(price) < 1) {
         alert("Price must be a positive number");
         return;
     }
