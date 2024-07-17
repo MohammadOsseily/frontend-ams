@@ -39,13 +39,13 @@ section.tqkn-parallax h1 {
 }
 
 section.tqkn-parallax-1 {
-    background-image: url("../images/plane.jpg");
+    background-image: url("../assets/images/plane.jpg");
 }
 section.tqkn-parallax-2 {
-    background-image: url("../images/accommodation.jpg");
+    background-image: url("../assets/images/accommodation.jpg");
 }
 section.tqkn-parallax-3 {
-    background-image: url("../images/taxi.jpg");
+    background-image: url("../assets/images/taxi.jpg");
 }
 @media all and (min-width: 600px){
     section.tqkn-container h2 {
