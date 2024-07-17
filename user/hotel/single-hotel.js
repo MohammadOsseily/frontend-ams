@@ -19,10 +19,22 @@ function fetchHotelDetails() {
                 checkBookingStatus();
             } else {
                 console.error('No hotel found in response', response.data);
+                Swal.fire({
+                    title: 'No Hotel Found',
+                    text: 'No Hotel details found in the response.',
+                    icon: 'info',
+                    confirmButtonText: 'Okay'
+                });
             }
         })
         .catch(error => {
             console.error('There was an error retrieving the hotel!', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'There was an error retrieving the Hotel. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
         });
 }
 
@@ -38,6 +50,12 @@ function checkBookingStatus() {
         })
         .catch(error => {
             console.error('There was an error checking the booking status!', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'There was an error checking the booking status. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
         });
 }
 
@@ -52,13 +70,23 @@ const currentDate = new Date();
 const selectedCheckInDate = new Date(checkInDate);
 
 if (selectedCheckInDate < currentDate) {
-    alert("Check-in date cannot be before the current date.");
+    Swal.fire({
+        title: 'Error',
+        text: 'Check-in date can not be before the current date',
+        icon: 'warning',
+        confirmButtonText: 'Okay'
+    });
     checkInDateInput.focus();
     return;
 }
 
 if (selectedCheckInDate >= new Date(checkOutDate)) {
-    alert("Check-out date must be later than check-in date.");
+    Swal.fire({
+        title: 'Error',
+        text: 'Check-out date must be later than check-in date',
+        icon: 'warning',
+        confirmButtonText: 'Okay'
+    });
     checkOutDateInput.focus();
     return;
 }
@@ -73,15 +101,31 @@ const bookingData = {
 axios.post('http://localhost/backend-ams/api/hotel_bookings/create.php', bookingData)
     .then(response => {
         if (response.data && response.data.status === 'success') {
-            alert('Hotel booked successfully!');
-            window.location.href = "list-of-hotel-bookings.html";
+            Swal.fire({
+                title: 'Flight Booked',
+                text: 'Flight booked successfully!',
+                icon: 'success',
+                confirmButtonText: 'Okay'
+            }).then(() => {
+                window.location.href = "list-of-hotel-bookings.html";
+            });
         } else {
-            alert('Failed to book hotel. ' + response.data.message);
+            Swal.fire({
+                title: 'Booking Failed',
+                text: `Failed to book Hotel. ${response.data.message}`,
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
         }
     })
     .catch(error => {
         console.error('There was an error booking the hotel!', error);
-        alert('Failed to book hotel. Please try again later.');
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to book Hotel. Please try again later.',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+        });
     });
 }
 
@@ -94,16 +138,31 @@ function cancelBooking() {
     axios.post('http://localhost/backend-ams/api/hotel_bookings/delete.php', bookingData)
         .then(response => {
             if (response.data && response.data.status === 'success') {
-                alert('Booking cancelled successfully!');
-                window.location.href = "list-of-hotel-bookings.html";
+                Swal.fire({
+                    title: 'Booking Cancelled',
+                    text: 'Booking cancelled successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'Okay'
+                }).then(() => {
+                    window.location.href = "list-of-hotel-bookings.html";
+                });
             } else {
-                alert('Failed to cancel booking. ' + response.data.message);
+                Swal.fire({
+                    title: 'Cancellation Failed',
+                    text: `Failed to cancel booking. ${response.data.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                });
             }
         })
         .catch(error => {
             console.error('There was an error cancelling the booking!', error);
-            alert('Failed to cancel booking. Please try again later.');
-        });
+            Swal.fire({
+                title: 'Error',
+                text: 'Failed to cancel booking. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });        });
 }
 
 document.getElementById('book-hotel-btn').addEventListener('click', bookHotel);

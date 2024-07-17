@@ -2,22 +2,32 @@ let flights = [];
 
 axios.get('http://localhost/backend-ams/api/flight/read.php')
     .then(response => {
-        console.log(response.data); // Log the response to check its structure
-
         if (response.data && response.data.flights) {
             flights = response.data.flights;
             displayFlights(flights);
         } else {
             console.error('No flights found in response', response.data);
+            Swal.fire({
+                title: 'No Flights Found',
+                text: 'There were no flights found in the response.',
+                icon: 'info',
+                confirmButtonText: 'Okay'
+            });
         }
     })
     .catch(error => {
         console.error('There was an error retrieving the flights!', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'There was an error retrieving the flights. Please try again later.',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+        });
     });
 
 function displayFlights(flights) {
     const flightsList = document.getElementById('flights-list');
-    flightsList.innerHTML = ''; // Clear previous content
+    flightsList.innerHTML = ''; 
 
     flights.forEach(flight => {
         const flightDiv = document.createElement('div');

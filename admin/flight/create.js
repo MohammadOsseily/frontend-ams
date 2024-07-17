@@ -1,4 +1,3 @@
-
 axios.get('http://localhost/backend-ams/api/airport/read.php')
     .then(response => {
         const airports = response.data.airports;
@@ -18,7 +17,7 @@ axios.get('http://localhost/backend-ams/api/airport/read.php')
     })
     .catch(error => {
         console.error('Failed to fetch airports:', error);
-        alert('Failed to fetch airports. Please try again later.');
+        Swal.fire('Error', 'Failed to fetch airports. Please try again later.', 'error');
     });
 
 // Handle form submission
@@ -34,35 +33,35 @@ document.getElementById('create-flight-form').addEventListener('submit', functio
     const price = document.getElementById('price').value;
 
     if (departureAirport === arrivalAirport) {
-        alert("Departure and arrival airports cannot be the same");
+        Swal.fire('Validation Error', 'Departure and arrival airports cannot be the same', 'error');
         return;
     }
 
     if (new Date(departureTime) >= new Date(arrivalTime)) {
-        alert("Departure time must be before arrival time");
+        Swal.fire('Validation Error', 'Departure time must be before arrival time', 'error');
         return;
     }
 
     if (new Date(departureTime) < new Date()) {
-        alert("Departure time must be in the future");
+        Swal.fire('Validation Error', 'Departure time must be in the future', 'error');
         return;
     }    
 
     // Validate flight number format (alphanumeric and length between 1 and 10)
     if (!flightNumber.match(/^[a-zA-Z0-9]{1,10}$/)) {
-        alert("Flight number should be alphanumeric and up to 10 characters");
+        Swal.fire('Validation Error', 'Flight number should be alphanumeric and up to 10 characters', 'error');
         return;
     }
 
     // Validate capacity (positive integer)
     if (parseInt(capacity) < 1) {
-        alert("Capacity must be a positive integer");
+        Swal.fire('Validation Error', 'Capacity must be a positive integer', 'error');
         return;
     }
 
     // Validate price (positive float)
     if (parseFloat(price) < 1) {
-        alert("Price must be a positive number");
+        Swal.fire('Validation Error', 'Price must be a positive number', 'error');
         return;
     }
 
@@ -80,14 +79,15 @@ document.getElementById('create-flight-form').addEventListener('submit', functio
     axios.post('http://localhost/backend-ams/api/flight/create.php', payload)
     .then(response => {
         if (response.data.status === 'success') {
-            alert('Flight created successfully!');
-            window.location.href = 'read.html'; 
+            Swal.fire('Success', 'Flight created successfully!', 'success').then(() => {
+                window.location.href = 'read.html'; 
+            });
         } else {
-            alert('Failed to create flight. ' + response.data.message);
+            Swal.fire('Error', 'Failed to create flight. ' + response.data.message, 'error');
         }
     })
     .catch(error => {
         console.error('There was an error creating the flight!', error);
-        alert('Failed to create flight. Please try again later.');
+        Swal.fire('Error', 'Failed to create flight. Please try again later.', 'error');
     });
 });

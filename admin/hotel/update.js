@@ -1,7 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const hotelId = urlParams.get('id');
 
-// Fetch hotel details and populate the form
 function fetchHotelDetails() {
     axios.get(`http://localhost/backend-ams/api/hotel/read-one.php?id=${hotelId}`)
         .then(response => {
@@ -15,14 +14,15 @@ function fetchHotelDetails() {
                 document.getElementById('address').value = hotel.address;
             } else {
                 console.error('No hotel found in response', response.data);
+                Swal.fire('Error', 'No hotel found.', 'error');
             }
         })
         .catch(error => {
             console.error('There was an error retrieving the hotel!', error);
+            Swal.fire('Error', 'Failed to retrieve hotel details. Please try again later.', 'error');
         });
 }
 
-// Handle form submission for updating hotel
 document.getElementById('update-hotel-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -34,11 +34,10 @@ document.getElementById('update-hotel-form').addEventListener('submit', function
 
     // Validate numeric fields
     if (isNaN(pricePerNight) || pricePerNight <= 0 || isNaN(availableRooms) || availableRooms <= 0) {
-        alert('Price per Night and Available Rooms must be positive numeric values.');
+        Swal.fire('Error', 'Price per Night and Available Rooms must be positive numeric values.', 'error');
         return;
     }
 
-    // Prepare data for update
     const hotelData = {
         id: hotelId,
         name: name,
@@ -48,24 +47,21 @@ document.getElementById('update-hotel-form').addEventListener('submit', function
         address: address
     };
 
-    // Debug console logs
-    console.log('Hotel data to send:', hotelData);
-
-    // Send update request
     axios.post('http://localhost/backend-ams/api/hotel/update.php', hotelData)
         .then(response => {
             if (response.data.status === 'success') {
-                alert('Hotel updated successfully!');
-                window.location.href = 'read.html';
+                Swal.fire('Success', 'Hotel updated successfully!', 'success')
+                    .then(() => {
+                        window.location.href = 'read.html';
+                    });
             } else {
-                alert('Failed to update hotel. ' + response.data.message);
+                Swal.fire('Error', 'Failed to update hotel. ' + response.data.message, 'error');
             }
         })
         .catch(error => {
             console.error('There was an error updating the hotel!', error);
-            alert('Failed to update hotel. Please try again later.');
+            Swal.fire('Error', 'Failed to update hotel. Please try again later.', 'error');
         });
 });
 
-// Fetch hotel details on page load
 fetchHotelDetails();

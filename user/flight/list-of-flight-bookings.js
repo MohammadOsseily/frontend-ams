@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const userId = 12; // Hardcoded for demonstration, replace with actual user ID logic
 
@@ -34,27 +33,41 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function cancelBooking(userId, flightId) {
-    const bookingData = {
-        user_id: userId,
-        flight_id: flightId
-    };
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you really want to cancel this booking?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, cancel it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const bookingData = {
+                user_id: userId,
+                flight_id: flightId
+            };
 
-    axios.post('http://localhost/backend-ams/api/flight_bookings/delete.php', bookingData, {
-        headers: {
-            'Content-Type': 'application/json'
+            axios.post('http://localhost/backend-ams/api/flight_bookings/delete.php', bookingData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log(response.data); // Log the entire response data
+                if (response.data.status === 'success') {
+                    Swal.fire('Cancelled!', 'Your booking has been cancelled.', 'success')
+                        .then(() => {
+                            window.location.reload();
+                        });
+                } else {
+                    Swal.fire('Error', 'Failed to cancel booking. ' + response.data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('There was an error cancelling the booking!', error.response ? error.response.data : error);
+                Swal.fire('Error', 'Failed to cancel booking. Please try again later.', 'error');
+            });
         }
-    })
-    .then(response => {
-        console.log(response.data); // Log the entire response data
-        if (response.data.status === 'success') {
-            alert('Booking cancelled successfully!');
-            window.location.reload();
-        } else {
-            alert('Failed to cancel booking. ' + response.data.message);
-        }
-    })
-    .catch(error => {
-        console.error('There was an error cancelling the booking!', error.response ? error.response.data : error);
-        alert('Failed to cancel booking. Please try again later.');
     });
 }

@@ -5,45 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Flight</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
     <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <a href="../airport/read.html">Airports</a>
-        <a href="../flight/read.html">Flights</a>
-        <a href="../hotel/read.html">Hotels</a>
-        <a href="../taxi/read.html">Taxis</a>
-        <a href="../users/read.html">Users</a>
+        <h2 class="sidebar-title">Admin Panel</h2>
+        <a class="sidebar-link" href="../airport/read.html">Airports</a>
+        <a class="sidebar-link" href="../flight/read.html">Flights</a>
+        <a class="sidebar-link" href="../hotel/read.html">Hotels</a>
+        <a class="sidebar-link" href="../taxi/read.html">Taxis</a>
+        <a class="sidebar-link" href="../users/read.html">Users</a>
     </div>
     <div class="content">
-    <h1>Update Flight</h1>
-    <form id="update-flight-form">
-        <input type="hidden" id="flight_id" name="flight_id">
+        <h1 class="content-title">Update Flight</h1>
+        <form id="update-flight-form" class="form">
+            <input type="hidden" id="flight_id" name="flight_id">
 
-        <label for="flight_number">Flight Number:</label>
-        <input type="text" id="flight_number" name="flight_number" required><br>
+            <label for="flight_number" class="form-label">Flight Number:</label>
+            <input type="text" id="flight_number" name="flight_number" class="form-input" required><br>
 
-        <label for="departure_airport">Departure Airport:</label>
-        <select id="departure_airport" name="departure_airport" required></select><br>
+            <label for="departure_airport" class="form-label">Departure Airport:</label>
+            <select id="departure_airport" name="departure_airport" class="form-select" required></select><br>
 
-        <label for="arrival_airport">Arrival Airport:</label>
-        <select id="arrival_airport" name="arrival_airport" required></select><br>
+            <label for="arrival_airport" class="form-label">Arrival Airport:</label>
+            <select id="arrival_airport" name="arrival_airport" class="form-select" required></select><br>
 
-        <label for="departure_time">Departure Time:</label>
-        <input type="datetime-local" id="departure_time" name="departure_time" required><br>
+            <label for="departure_time" class="form-label">Departure Time:</label>
+            <input type="datetime-local" id="departure_time" name="departure_time" class="form-input" required><br>
 
-        <label for="arrival_time">Arrival Time:</label>
-        <input type="datetime-local" id="arrival_time" name="arrival_time" required><br>
+            <label for="arrival_time" class="form-label">Arrival Time:</label>
+            <input type="datetime-local" id="arrival_time" name="arrival_time" class="form-input" required><br>
 
-        <label for="capacity">Capacity:</label>
-        <input type="number" id="capacity" name="capacity" step="1" required min="1"><br>
+            <label for="capacity" class="form-label">Capacity:</label>
+            <input type="number" id="capacity" name="capacity" class="form-input" step="1" required min="1"><br>
 
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="1" required min="1"><br>
+            <label for="price" class="form-label">Price:</label>
+            <input type="number" id="price" name="price" class="form-input" step="1" required min="1"><br>
 
-        <button type="submit">Update Flight</button>
-    </form>
+            <button type="submit" class="form-button">Update Flight</button>
+        </form>
     </div>
     <script src="update.js"></script>
 </body>

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const userId = 12; // Hardcoded for demonstration, replace with actual user ID logic
 
@@ -41,17 +40,32 @@ function cancelBooking(bookingId) {
             'Content-Type': 'application/json'
         }
     })
-        .then(response => {
-            console.log(response.data); // Log the entire response data
-            if (response.data.status === 'success') {
-                alert('Booking cancelled successfully!');
+    .then(response => {
+        if (response.data.status === 'success') {
+            Swal.fire({
+                title: 'Booking Cancelled',
+                text: 'Booking cancelled successfully!',
+                icon: 'success',
+                confirmButtonText: 'Okay'
+            }).then(() => {
                 window.location.reload();
-            } else {
-                alert('Failed to cancel booking. ' + response.data.message);
-            }
-        })
-        .catch(error => {
-            console.error('There was an error cancelling the booking!', error.response ? error.response.data : error);
-            alert('Failed to cancel booking. Please try again later.');
+            });
+        } else {
+            Swal.fire({
+                title: 'Cancellation Failed',
+                text: `Failed to cancel booking. ${response.data.message}`,
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
+        }
+    })
+    .catch(error => {
+        console.error('There was an error cancelling the booking!', error.response ? error.response.data : error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to cancel booking. Please try again later.',
+            icon: 'error',
+            confirmButtonText: 'Okay'
         });
+    });
 }

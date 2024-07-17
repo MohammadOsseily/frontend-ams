@@ -1,4 +1,3 @@
-
 const urlParams = new URLSearchParams(window.location.search);
 const flightId = urlParams.get('id');
 const userId = 12; // Hardcoded user ID for now
@@ -25,10 +24,22 @@ function fetchFlightDetails() {
                 checkBookingStatus();
             } else {
                 console.error('No flight found in response', response.data);
+                Swal.fire({
+                    title: 'No Flight Found',
+                    text: 'No flight details found in the response.',
+                    icon: 'info',
+                    confirmButtonText: 'Okay'
+                });
             }
         })
         .catch(error => {
             console.error('There was an error retrieving the flight!', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'There was an error retrieving the flight. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
         });
 }
 
@@ -44,17 +55,33 @@ function checkBookingStatus() {
         })
         .catch(error => {
             console.error('There was an error checking the booking status!', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'There was an error checking the booking status. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
         });
 }
 
 function bookFlight() {
     if (new Date() > departureTime) {
-        alert('Cannot book a flight that has already departed');
+        Swal.fire({
+            title: 'Cannot Book Flight',
+            text: 'Cannot book a flight that has already departed.',
+            icon: 'warning',
+            confirmButtonText: 'Okay'
+        });
         return;
     }
 
     if (capacity <= 0) {
-        alert('No available seats for this flight');
+        Swal.fire({
+            title: 'No Available Seats',
+            text: 'No available seats for this flight.',
+            icon: 'warning',
+            confirmButtonText: 'Okay'
+        });
         return;
     }
 
@@ -68,19 +95,34 @@ function bookFlight() {
             'Content-Type': 'application/json'
         }
     })
-        .then(response => {
-            console.log(response.data); // Log the entire response data
-            if (response.data.status === 'success') {
-                alert('Flight booked successfully!');
+    .then(response => {
+        if (response.data.status === 'success') {
+            Swal.fire({
+                title: 'Flight Booked',
+                text: 'Flight booked successfully!',
+                icon: 'success',
+                confirmButtonText: 'Okay'
+            }).then(() => {
                 window.location.href = "list-of-flight-bookings.html";
-            } else {
-                alert('Failed to book flight. ' + response.data.message);
-            }
-        })
-        .catch(error => {
-            console.error('There was an error booking the flight!', error.response ? error.response.data : error);
-            alert('Failed to book flight. Please try again later.');
+            });
+        } else {
+            Swal.fire({
+                title: 'Booking Failed',
+                text: `Failed to book flight. ${response.data.message}`,
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
+        }
+    })
+    .catch(error => {
+        console.error('There was an error booking the flight!', error.response ? error.response.data : error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to book flight. Please try again later.',
+            icon: 'error',
+            confirmButtonText: 'Okay'
         });
+    });
 }
 
 function cancelBooking() {
@@ -94,19 +136,35 @@ function cancelBooking() {
             'Content-Type': 'application/json'
         }
     })
-        .then(response => {
-            console.log(response.data); // Log the entire response data
-            if (response.data.status === 'success') {
-                alert('Booking cancelled successfully!');
+    .then(response => {
+        console.log(response.data);
+        if (response.data.status === 'success') {
+            Swal.fire({
+                title: 'Booking Cancelled',
+                text: 'Booking cancelled successfully!',
+                icon: 'success',
+                confirmButtonText: 'Okay'
+            }).then(() => {
                 window.location.href = "list-of-flight-bookings.html";
-            } else {
-                alert('Failed to cancel booking. ' + response.data.message);
-            }
-        })
-        .catch(error => {
-            console.error('There was an error cancelling the booking!', error.response ? error.response.data : error);
-            alert('Failed to cancel booking. Please try again later.');
+            });
+        } else {
+            Swal.fire({
+                title: 'Cancellation Failed',
+                text: `Failed to cancel booking. ${response.data.message}`,
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
+        }
+    })
+    .catch(error => {
+        console.error('There was an error cancelling the booking!', error.response ? error.response.data : error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Failed to cancel booking. Please try again later.',
+            icon: 'error',
+            confirmButtonText: 'Okay'
         });
+    });
 }
 
 document.getElementById('book-flight-btn').addEventListener('click', bookFlight);

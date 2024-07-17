@@ -1,7 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const flightId = urlParams.get('id');
 
-// Fetch airports and populate the dropdowns
 function populateAirports() {
     axios.get('http://localhost/backend-ams/api/airport/read.php')
         .then(response => {
@@ -21,10 +20,10 @@ function populateAirports() {
         })
         .catch(error => {
             console.error('There was an error retrieving the airports!', error);
+            Swal.fire('Error', 'Failed to fetch airports. Please try again later.', 'error');
         });
 }
 
-// Fetch flight details and populate the form
 function fetchFlightDetails() {
     axios.get(`http://localhost/backend-ams/api/flight/read-one.php?id=${flightId}`)
         .then(response => {
@@ -40,10 +39,12 @@ function fetchFlightDetails() {
                 document.getElementById('price').value = flight.price;
             } else {
                 console.error('No flight found in response', response.data);
+                Swal.fire('Error', 'No flight found.', 'error');
             }
         })
         .catch(error => {
             console.error('There was an error retrieving the flight!', error);
+            Swal.fire('Error', 'Failed to retrieve flight details. Please try again later.', 'error');
         });
 }
 
@@ -61,39 +62,38 @@ document.getElementById('update-flight-form').addEventListener('submit', functio
 
     // Frontend validation
     if (departureAirportId === arrivalAirportId) {
-        alert("Departure and arrival airports cannot be the same");
+        Swal.fire('Error', "Departure and arrival airports cannot be the same", 'error');
         return;
     }
 
     if (new Date(departureTime) >= new Date(arrivalTime)) {
-        alert("Departure time must be before arrival time");
+        Swal.fire('Error', "Departure time must be before arrival time", 'error');
         return;
     }
 
     if (new Date(departureTime) < new Date()) {
-        alert("Departure time must be in the future");
+        Swal.fire('Error', "Departure time must be in the future", 'error');
         return;
     }  
 
     // Validate flight number format (alphanumeric and length between 1 and 10)
     if (!flightNumber.match(/^[a-zA-Z0-9]{1,10}$/)) {
-        alert("Flight number should be alphanumeric and up to 10 characters");
+        Swal.fire('Error', "Flight number should be alphanumeric and up to 10 characters", 'error');
         return;
     }
 
     // Validate capacity (positive integer)
     if (parseInt(capacity) < 1) {
-        alert("Capacity must be a positive integer");
+        Swal.fire('Error', "Capacity must be a positive integer", 'error');
         return;
     }
 
     // Validate price (positive float)
     if (parseFloat(price) < 1) {
-        alert("Price must be a positive number");
+        Swal.fire('Error', "Price must be a positive number", 'error');
         return;
     }
 
-    // Prepare data for update
     const flightData = {
         id: flightId,
         flight_number: flightNumber,
@@ -101,26 +101,26 @@ document.getElementById('update-flight-form').addEventListener('submit', functio
         arrival_airport: arrivalAirportId,
         departure_time: departureTime,
         arrival_time: arrivalTime,
-        capacity: parseInt(capacity), // Ensure capacity is parsed to integer if necessary
-        price: parseFloat(price) // Ensure price is parsed to float if necessary
+        capacity: parseInt(capacity), 
+        price: parseFloat(price)
     };
 
-    // Send update request
     axios.post('http://localhost/backend-ams/api/flight/update.php', flightData)
         .then(response => {
             if (response.data.status === 'success') {
-                alert('Flight updated successfully!');
-                window.location.href = 'read.html'; // Redirect to flight list after update
+                Swal.fire('Success', 'Flight updated successfully!', 'success')
+                    .then(() => {
+                        window.location.href = 'read.html';
+                    });
             } else {
-                alert('Failed to update flight. ' + response.data.message);
+                Swal.fire('Error', 'Failed to update flight. ' + response.data.message, 'error');
             }
         })
         .catch(error => {
             console.error('There was an error updating the flight!', error);
-            alert('Failed to update flight. Please try again later.');
+            Swal.fire('Error', 'Failed to update flight. Please try again later.', 'error');
         });
 });
 
-// Populate airports and fetch flight details on page load
 populateAirports();
 fetchFlightDetails();

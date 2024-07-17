@@ -1,4 +1,3 @@
-
 function createHotel() {
     const form = document.getElementById('hotelForm');
     if (form.checkValidity()) {
@@ -10,28 +9,29 @@ function createHotel() {
             available_rooms: parseInt(form.elements['available_rooms'].value)
         };
 
-      // Validate numeric fields
-    if (isNaN(formData.price_per_night) || formData.price_per_night <= 0 || isNaN(formData.available_rooms) || formData.available_rooms <= 0) {
-        alert('Price per Night and Available Rooms must be positive numeric values.');
-        return;
-    }
+        // Validate numeric fields
+        if (isNaN(formData.price_per_night) || formData.price_per_night <= 0 || isNaN(formData.available_rooms) || formData.available_rooms <= 0) {
+            Swal.fire('Error', 'Price per Night and Available Rooms must be positive numeric values.', 'error');
+            return;
+        }
 
         axios.post('http://localhost/backend-ams/api/hotel/create.php', formData)
             .then(response => {
-                console.log(response.data); 
                 if (response.data.status === 'success') {
-                    alert('Hotel created successfully!');
-                    window.location.href = 'read.html'; // Redirect to read.html on success
+                    Swal.fire('Success', 'Hotel created successfully!', 'success')
+                        .then(() => {
+                            window.location.href = 'read.html'; 
+                        });
                 } else {
-                    alert('Failed to create hotel. ' + response.data.message);
+                    Swal.fire('Error', 'Failed to create hotel. ' + response.data.message, 'error');
                 }
                 form.reset();
             })
             .catch(error => {
-                console.error('Error creating hotel:', error); // Handle error
-                alert('Error creating hotel. Please try again.');
+                console.error('Error creating hotel:', error); 
+                Swal.fire('Error', 'Error creating hotel. Please try again.', 'error');
             });
     } else {
-        alert('Please fill out all required fields.');
+        Swal.fire('Error', 'Please fill out all required fields.', 'error');
     }
 }

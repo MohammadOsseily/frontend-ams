@@ -25,33 +25,43 @@ function fetchFlights() {
                 });
             } else {
                 console.error('No flights found in response', response.data);
+                Swal.fire('Error', 'No flights found.', 'error');
             }
         })
         .catch(error => {
             console.error('There was an error retrieving the flights!', error);
+            Swal.fire('Error', 'Failed to retrieve flights. Please try again later.', 'error');
         });
 }
 
 // Function to delete a flight
 function deleteFlight(flightId) {
-    if (confirm('Are you sure you want to delete this flight?')) {
-        axios.post('http://localhost/backend-ams/api/flight/delete.php', {
-            id: flightId // Ensure this matches the parameter name expected by backend
-        })
-        .then(response => {
-            if (response.data.status === 'success') {
-                alert('Flight deleted successfully!');
-                fetchFlights(); // Reload flights after deletion
-            } else {
-                alert('Failed to delete flight. ' + response.data.message);
-            }
-        })
-        .catch(error => {
-            console.error('There was an error deleting the flight!', error);
-            alert('Failed to delete flight. Please try again later.');
-        });
-    }
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            axios.post('http://localhost/backend-ams/api/flight/delete.php', {
+                id: flightId 
+            })
+            .then(response => {
+                if (response.data.status === 'success') {
+                    Swal.fire('Deleted!', 'Flight deleted successfully.', 'success');
+                    fetchFlights(); 
+                } else {
+                    Swal.fire('Error', 'Failed to delete flight. ' + response.data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('There was an error deleting the flight!', error);
+                Swal.fire('Error', 'Failed to delete flight. Please try again later.', 'error');
+            });
+        }
+    });
 }
 
-// Fetch flights on page load
 fetchFlights();
