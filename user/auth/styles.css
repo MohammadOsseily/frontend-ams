@@ -12,6 +12,9 @@ body {
     #87ceeb,
     #b0e0e6
   ); /* Sky blue gradient */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 2px solid #fff; /* Thin white line to resemble cloud */
   overflow: hidden;
   position: fixed;
@@ -33,6 +36,23 @@ body {
   font-size: 24px;
   text-decoration: none;
   font-weight: bold;
+}
+.navbar-links {
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar-signup a {
+  padding-right: 10px;
 }
 
 .auth-container {
