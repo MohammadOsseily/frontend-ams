@@ -1,0 +1,106 @@
+/* auth.css */
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f0f8ff; /* Light sky blue background */
+}
+
+.navbar {
+  background: linear-gradient(
+    to right,
+    #87ceeb,
+    #b0e0e6
+  ); /* Sky blue gradient */
+  border-bottom: 2px solid #fff; /* Thin white line to resemble cloud */
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+.navbar-logo {
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f8ff; /* Light sky blue background */
+  padding-top: 60px; /* Adjust this value based on the navbar height */
+}
+
+.auth-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.auth-form h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #00bfff;
+}
+
+p {
+  text-align: center;
+  color: #333;
+}
+
+p a {
+  color: #87ceeb;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
