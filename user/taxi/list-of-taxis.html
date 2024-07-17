@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Taxis</title>
+    <link rel="stylesheet" href="./taxi.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-logo">
+                    <img src="../../assets/images/airplane.png" alt="Logo">
+                </div>
+                <ul class="navbar-links">
+                    <li><a href="../trip-planner/trip-planner.html">PlanTrip</a></li>
+                    <li><a href="../flight/list-of-flights.html">Flights</a></li>
+                    <li><a href="../hotel/list-of-hotels.html">Hotels</a></li>
+                    <li><a href="list-of-taxis.html">Taxis</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <h1>Taxis List</h1>
+    <div class="header">
+        <input type="text" id="search-bar" placeholder="Search by company name or city" oninput="filterTaxis()">
+        <a href="list-of-taxi-bookings.html" class="button-nav">My Taxis</a>
+    </div>
+    <div id="taxis-list"></div>
+    <script src="list-of-taxis.js"></script>
+</body>
+</html>
