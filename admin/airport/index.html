@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Airports</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="/admin//dashboard//index.html">Manage Users</a></li>
+            <li><a href="/admin/taxi/index.html">Manage Taxi</a></li>
+            <li><a href="#">Mange Flights</a></li>
+            <li><a href="/admin/airport/index.html">Mange Airport</a></li>
+            <li><a href="#">Mange Hotels</a></li>
+            <li><a href="#" id="logoutButton">Logout</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Manage Airports</h1>
+        <button id="createAirportButton">Create Airport</button>
+        <table id="airportTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Airport rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Create Airport Modal -->
+    <div id="createAirportModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCreateAirportModal">&times;</span>
+            <h2>Create Airport</h2>
+            <form id="createAirportForm">
+                <label for="create-name">Name:</label>
+                <input type="text" id="create-name" name="name" required>
+                <label for="create-location">Location:</label>
+                <input type="text" id="create-location" name="location" required>
+                <button type="submit">Create Airport</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Airport Modal -->
+    <div id="updateAirportModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeUpdateAirportModal">&times;</span>
+            <h2>Update Airport</h2>
+            <form id="updateAirportForm">
+                <input type="hidden" id="update-id" name="id">
+                <label for="update-name">Name:</label>
+                <input type="text" id="update-name" name="name" required>
+                <label for="update-location">Location:</label>
+                <input type="text" id="update-location" name="location" required>
+                <button type="submit">Update Airport</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
