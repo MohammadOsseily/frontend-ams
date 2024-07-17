@@ -118,8 +118,19 @@ body {
   height: 100%;
   /* overflow: hidden; */
 }
-spline-viewer {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+
+.spline-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  spline-viewer {
+    border: none;
+    width: calc(
+      50% - 10px
+    ); /* Adjust width to fit two viewers with a 20px gap */
+    height: 500px; /* Adjust height as needed */
+  }
