@@ -1,135 +1,177 @@
-@import url("https://fonts.googleapis.com/css2?family=Lalezar&family=Poppins:wght@400;500;600;700&family=Scheherazade&display=swap");
-* {
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: "Poppins", "Lalezar", cursive;
+  display: flex;
 }
-body {
-  min-height: 200vh;
-}
-header {
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #87ceeb;
+  color: white;
+  height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.sidebar h2 {
+  margin: 0 0 20px 0;
+}
+
+.sidebar ul {
+  height: 100%;
+  list-style: none;
+  padding: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.6s;
-  padding: 40px 100px;
-  background: #87ceeb;
-  z-index: 10;
+  flex-direction: column;
+  justify-content: space-around;
 }
-header.sticky {
-  padding: 5px 100px;
-  background: #fff;
+
+.sidebar ul li {
+  width: 100%;
 }
-header.sticky ul li a,
-header.sticky .logo {
-  color: #000;
-}
-header .logo {
-  position: relative;
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
-  font-size: 2em;
-  text-transform: 2em;
-  letter-spacing: 2px;
-  transition: 0.6s;
-}
-header ul {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-header ul li {
-  position: relative;
-  list-style: none;
-}
-header ul li a {
-  position: relative;
-  padding: 0 15px;
-  text-decoration: none;
-  color: #fff;
-  letter-spacing: 2px;
-  font-weight: 500;
-  transition: 0.6s;
+
+.sidebar ul li a {
   display: block;
-  height: 50px;
-  line-height: 50px;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: -webkit-fill-available;
 }
 
-header ul li a:hover,
-header ul li a.active {
-  border-bottom: 2px solid #fff;
+.sidebar ul li a:hover {
+  background-color: #38b4e6;
 }
-.menuToggle {
-  position: absolute;
-  top: 5px;
-  right: 100px;
-  width: 50px;
-  height: 50px;
-  background: #000
-    url(https://frezaeistudio.ir/wp-content/uploads/2020/12/toggle.png);
-  z-index: 2;
-  background-size: 30px;
-  background-repeat: no-repeat;
-  background-position: center;
+
+/* Main Content */
+.container {
+  margin-left: 250px;
+  padding: 20px;
+  width: calc(100% - 250px);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: 0.6s;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #38b4e6;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Modal container */
+.modal {
   display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
 }
-header.sticky .menuToggle {
-  filter: invert(1);
-}
-.menuToggle.active {
-  background: #000
-    url(https://frezaeistudio.ir/wp-content/uploads/2020/12/close.png);
-  z-index: 3;
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-  filter: invert(1);
-}
-@media (max-width: 991px) {
-  header {
-    padding: 5px 100px;
-    background: #fff;
-  }
-  header .logo {
-    color: #000;
-  }
-  .menuToggle {
-    display: block;
-    filter: invert(1);
-  }
-  header nav {
-    /*display: none;*/
-    position: absolute;
-    top: 50px;
-    left: -100%;
-    width: 100%;
-    height: 100vh;
-    background: #fff;
-    transition: 0.6s;
-  }
-  header ul li a {
-    color: #000;
-  }
 
-  header nav.active {
-    left: 0;
-  }
-  header nav ul {
-    display: block;
-    text-align: center;
-  }
-  header nav ul li a {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  }
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+form button {
+  background-color: #87ceeb;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+form button:hover {
+  background-color: #38b4e6;
 }
