@@ -1,24 +1,24 @@
-axios.get('http://localhost/backend-ams/api/airport/read.php')
-    .then(response => {
-        const airports = response.data.airports;
-        const departureAirportSelect = document.getElementById('departure_airport');
-        const arrivalAirportSelect = document.getElementById('arrival_airport');
+axios.post('http://localhost/backend-ams/api/airport/read.php', {})
+        .then(response => {
+            const airports = response.data.data;
+            const departureAirportSelect = document.getElementById('departure_airport');
+            const arrivalAirportSelect = document.getElementById('arrival_airport');
 
-        airports.forEach(airport => {
-            const option = document.createElement('option');
-            option.value = airport.id;
-            option.text = airport.name;
-            departureAirportSelect.add(option.cloneNode(true));
-            arrivalAirportSelect.add(option.cloneNode(true));
+            airports.forEach(airport => {
+                const option = document.createElement('option');
+                option.value = airport.id;
+                option.text = airport.name;
+                departureAirportSelect.add(option.cloneNode(true));
+                arrivalAirportSelect.add(option.cloneNode(true));
+            });
+
+            // Enable the submit button after populating airports
+            document.getElementById('submit-btn').disabled = false;
+        })
+        .catch(error => {
+            console.error('Failed to fetch airports:', error);
+            Swal.fire('Error', 'Failed to fetch airports. Please try again later.', 'error');
         });
-
-        // Enable the submit button after populating airports
-        document.getElementById('submit-btn').disabled = false;
-    })
-    .catch(error => {
-        console.error('Failed to fetch airports:', error);
-        Swal.fire('Error', 'Failed to fetch airports. Please try again later.', 'error');
-    });
 
 // Handle form submission
 document.getElementById('create-flight-form').addEventListener('submit', function(event) {

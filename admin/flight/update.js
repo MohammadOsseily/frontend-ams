@@ -2,26 +2,27 @@ const urlParams = new URLSearchParams(window.location.search);
 const flightId = urlParams.get('id');
 
 function populateAirports() {
-    axios.get('http://localhost/backend-ams/api/airport/read.php')
-        .then(response => {
-            if (response.data && response.data.airports) {
-                const airports = response.data.airports;
-                const departureSelect = document.getElementById('departure_airport');
-                const arrivalSelect = document.getElementById('arrival_airport');
-                
-                airports.forEach(airport => {
-                    const option = document.createElement('option');
-                    option.value = airport.id;
-                    option.text = airport.name;
-                    departureSelect.add(option.cloneNode(true));
-                    arrivalSelect.add(option);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('There was an error retrieving the airports!', error);
-            Swal.fire('Error', 'Failed to fetch airports. Please try again later.', 'error');
-        });
+    axios.post('http://localhost/backend-ams/api/airport/read.php', {})
+    .then(response => {
+        if (response.data && response.data.data) {
+            const airports = response.data.data;
+            const departureSelect = document.getElementById('departure_airport');
+            const arrivalSelect = document.getElementById('arrival_airport');
+
+            airports.forEach(airport => {
+                const option = document.createElement('option');
+                option.value = airport.id;
+                option.text = airport.name;
+                departureSelect.add(option.cloneNode(true));
+                arrivalSelect.add(option);
+            });
+        }
+    })
+    .catch(error => {
+        console.error('There was an error retrieving the airports!', error);
+        Swal.fire('Error', 'Failed to fetch airports. Please try again later.', 'error');
+    });
+
 }
 
 function fetchFlightDetails() {
