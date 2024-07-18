@@ -1,6 +1,22 @@
 const urlParams = new URLSearchParams(window.location.search);
 const taxiId = urlParams.get('id');
-const userId = 12; // Hardcoded user ID for now
+const token = localStorage.getItem('jwtToken');
+
+    let dtoken;
+
+   
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    let decodedToken = JSON.parse(jsonPayload);
+        
+    dtoken = decodedToken.data.id;
+    
+
+    let userId = dtoken;
 
 function fetchTaxiDetails() {
     axios.post('http://localhost/backend-ams/api/taxi/read-one.php', { id: taxiId })

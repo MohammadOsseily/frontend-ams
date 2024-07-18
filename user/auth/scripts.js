@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (role === 'admin') {
                         window.location.href = '../../admin/dashboard/index.html'; // Redirect to admin dashboard
                     } else {
-                        window.location.href = '/user/dashboard/index.html'; // Redirect to user dashboard
+                        window.location.href = '/index.html'; // Redirect to user dashboard
                     }
                     
                 });

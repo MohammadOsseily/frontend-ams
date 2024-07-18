@@ -1,7 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const userId = 12; // Hardcoded for demonstration, replace with actual user ID logic
+    const token = localStorage.getItem('jwtToken');
+
+    let dtoken;
+
+   
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    let decodedToken = JSON.parse(jsonPayload);
+        
+    dtoken = decodedToken.data.id;
+    
+
+    let userId = dtoken;
+    
 
     axios.get(`http://localhost/backend-ams/api/hotel_bookings/read-one-user.php?user_id=${userId}`)
+    
         .then(response => {
             if (response.data && response.data.bookings && response.data.bookings.length > 0) {
                 const bookings = response.data.bookings;
