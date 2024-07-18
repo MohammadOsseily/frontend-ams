@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <!--  ScrollTo.JS  -->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.js"></script>-->
+
+    <!--  Bootstrap CDN  -->
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+      integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+      integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
+      crossorigin="anonymous"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+      integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Trip Navigator</title>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"
+    ></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#tqkn-navbar-collapse"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a id="tqkn-brand" class="navbar-brand" href="#">TN</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="tqkn-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/user/trip-planner/trip-planner.html">PlanTrip</a></li>
+            <li><a href="/user/flight/list-of-flights.html">Flights</a></li>
+            <li><a href="/user/hotel/list-of-hotels.html">Hotels</a></li>
+            <li><a href="/user/taxi/list-of-taxis.html">Taxi</a></li>
+            <li><a href="/user/auth/login.html">Login</a></li>
+            <li><a href="/user/auth/register.html">Register</a></li>
+            
+          </ul>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+    <!-- /.navbar navbar-default navbar-fixed-top -->
+
+    <div id="tqkn-banner">
+      <div id="tqkn-banner-content">
+        <h2>Trip Navigator</h2>
+        <p>Your trip, your ride, your hotel, your dream vacation!</p>
+        <div>
+          <spline-viewer
+            url="https://prod.spline.design/WM32vpXMZMiuTWwD/scene.splinecode"
+            style="width: 100%; height: 66vh"
+          ></spline-viewer>
+        </div>
+        <a href="#">Book A Trip Now!</a>
+        <!-- check this button wen ra7!!!!-->>
+      </div>
+      <!-- /.tqkn-banner-content -->
+    </div>
+    <!-- /.tqkn-banner -->
+
+    <section id="why" class="tqkn-content">
+      <div class="tqkn-container">
+        <h2>Our Trip Navigator</h2>
+        <p>
+          Our comprehensive flight management system is designed to
+          revolutionize your travel experience by seamlessly integrating flight
+          bookings, hotel reservations, and taxi services into one user-friendly
+          platform. Whether you're planning a business trip or a leisurely
+          vacation, our system ensures that every aspect of your journey is
+          meticulously managed and tailored to your preferences.
+        </p>
+        <p>
+          With our flight booking feature, you can effortlessly search for and
+          book flights from a vast array of airlines, ensuring you find the best
+          deals and most convenient schedules. Our advanced search algorithms
+          and real-time updates guarantee that you always have access to the
+          latest flight information, making your booking process smooth and
+          efficient.
+        </p>
+        <p>
+          In addition to flights, our system offers an extensive hotel booking
+          service, allowing you to choose from a wide range of accommodations to
+          suit your needs and budget. From luxury hotels to budget-friendly
+          options, our platform provides detailed descriptions, user reviews,
+          and high-quality images to help you make an informed decision. You can
+          easily compare prices, amenities, and locations to find the perfect
+          place to stay.
+        </p>
+        <p>
+          To complete your travel plans, our integrated taxi service ensures
+          that you have reliable transportation from the moment you land.
+          Whether you need a ride to your hotel, a business meeting, or a
+          tourist attraction, our system allows you to book taxis in advance,
+          providing peace of mind and convenience. Our network of trusted taxi
+          providers guarantees timely and safe rides, so you can focus on
+          enjoying your trip.
+        </p>
+      </div>
+    </section>
+    <section id="flights" class="tqkn-parallax tqkn-parallax-1">
+      <div class="tqkn-container">
+        <h1>Flights</h1>
+      </div>
+    </section>
+    <section class="tqkn-content">
+      <div class="tqkn-container">
+        <h2>Flights</h2>
+        <p>
+          Indulge in the ultimate comfort and luxury with our first-class
+          service. Enjoy spacious seating with lie-flat beds, gourmet dining
+          options curated by top chefs, and a personalized entertainment system.
+          Our dedicated flight attendants are on hand to cater to your every
+          need, ensuring a truly pampered experience.
+        </p>
+        <p>
+          For those seeking an elevated travel experience without breaking the
+          bank, our premium economy class offers additional legroom, wider
+          seats, and enhanced dining options. Enjoy priority boarding and extra
+          baggage allowance, making your journey more comfortable and
+          convenient.
+        </p>
+        <p>
+          Stay entertained and connected throughout your flight with our
+          state-of-the-art in-flight entertainment system. Choose from a vast
+          selection of movies, TV shows, music, and games. Our high-speed Wi-Fi
+          service allows you to stay in touch with loved ones or catch up on
+          work, ensuring you're connected at 30,000 feet.
+        </p>
+        <p>
+          Savor a delightful culinary experience with our diverse menu options.
+          Whether you have dietary preferences or are in the mood for
+          international cuisine, our gourmet meals are prepared with the finest
+          ingredients. Complement your meal with a selection of fine wines,
+          spirits, and beverages.
+        </p>
+      </div>
+    </section>
+    <section id="hotels" class="tqkn-parallax tqkn-parallax-2">
+      <div class="tqkn-container">
+        <h1>Hotels</h1>
+      </div>
+    </section>
+    <section class="tqkn-content">
+      <div class="tqkn-container">
+        <h2>Hotels</h2>
+        <p>
+          Our rooms and suites are designed with your utmost comfort in mind.
+          Each room is furnished with luxurious bedding, modern amenities, and
+          stunning views. From cozy standard rooms to expansive presidential
+          suites, we offer a variety of options to suit your needs. Enjoy
+          complimentary high-speed Wi-Fi, flat-screen TVs, and fully stocked
+          minibars in every room.
+        </p>
+        <p>
+          Indulge in a culinary journey at our diverse dining establishments.
+          Whether you crave international cuisine, local delicacies, or healthy
+          options, our world-class chefs create dishes that delight the palate.
+          Dine at our elegant restaurants, enjoy a casual meal at our cafes, or
+          savor snacks and beverages from our 24-hour room service.
+        </p>
+        <p>
+          Rejuvenate your mind, body, and soul at our luxurious spa. Our
+          experienced therapists offer a wide range of treatments, from relaxing
+          massages to invigorating facials. Enjoy access to our state-of-the-art
+          fitness center, complete with the latest equipment, personal trainers,
+          and yoga classes. Our wellness facilities also include a sauna, steam
+          room, and swimming pools.
+        </p>
+        <p>
+          Host successful meetings, conferences, and events at Grand Horizon
+          Hotels. Our versatile event spaces are equipped with advanced
+          audio-visual technology and high-speed internet. Our dedicated event
+          planning team assists with every detail, ensuring your event runs
+          smoothly. From intimate gatherings to grand celebrations, we cater to
+          all occasions.
+        </p>
+      </div>
+    </section>
+    <section id="taxi" class="tqkn-parallax tqkn-parallax-3">
+      <div class="tqkn-container">
+        <h1>Taxis</h1>
+      </div>
+    </section>
+    <section class="tqkn-content">
+      <div class="tqkn-container">
+        <h2>Taxis</h2>
+        <p>
+          CityLine Taxis operates around the clock to ensure you have access to
+          reliable transportation whenever you need it. Whether it's an early
+          morning airport transfer, a late-night ride home, or a mid-day
+          business meeting, our taxis are available 24/7 to cater to your
+          schedule.
+        </p>
+        <p>
+          We offer an extensive fleet of vehicles to suit various preferences
+          and requirements. Choose from our standard sedans for everyday travel,
+          spacious SUVs for group outings, or luxurious executive cars for
+          special occasions. All our vehicles are well-maintained, ensuring a
+          comfortable and safe ride.
+        </p>
+        <p>
+          Our team of professional drivers is trained to provide exceptional
+          service with a focus on safety and customer satisfaction. They are
+          knowledgeable about local routes, ensuring you reach your destination
+          promptly. Our drivers undergo thorough background checks and regular
+          training to maintain the highest standards of service.
+        </p>
+        <p>
+          Booking a ride with CityLine Taxis is quick and convenient. Use our
+          user-friendly mobile app, website, or call our 24/7 customer service
+          hotline to book your ride. Our app allows you to track your driver in
+          real-time, estimate your fare, and make secure payments, providing a
+          seamless booking experience.
+        </p>
+      </div>
+    </section>
+
+    <div class="spline-container">
+      <spline-viewer
+        url="https://prod.spline.design/dxnwWEvz0nxyHoCP/scene.splinecode"
+      ></spline-viewer>
+      <spline-viewer
+        url="https://prod.spline.design/YW15YBRZwr9Toh1g/scene.splinecode"
+      ></spline-viewer>
+    </div>
+
+    <!-- <footer>
+      Made by: Flight Management System Team<br />
+      flightms@gmail.com<br />
+      phone number<br />
+      <a href="https://github.com/MohammadOsseily">Team Leader Github</a>
+    </footer> -->
+
+    <footer
+      style="
+        background-color: #333;
+        color: #ccc;
+        padding: 20px;
+        text-align: center;
+        font-family: 'Georgia', serif;
+        font-size: 14px;
+        border-top: 2px solid #555;
+      "
+    >
+      <p>Made by: Flight Management System Team</p>
+      <p>
+        Contact us:
+        <a
+          href="mailto:flightms@gmail.com"
+          style="color: #66ccff; text-decoration: none"
+          >flightms@gmail.com</a
+        >
+        |
+        <a href="tel:+1234567890" style="color: #66ccff; text-decoration: none"
+          >+1 (234) 567-890</a
+        >
+      </p>
+      <p>
+        <a
+          href="https://github.com/MohammadOsseily"
+          style="color: #66ccff; text-decoration: none"
+          >Team Leader's GitHub</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />

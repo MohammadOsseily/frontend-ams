@@ -1,0 +1,161 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: skyblue;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #007BFF;
+        }
+        .trip-plan {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+        }
+        .trip-plan h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .trip-plan h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .trip-plan pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+            button {
+                padding: 8px;
+            }
+        }
+
+        header {
+            background-color: #87ceeb;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        }
+        
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 100px;
+}
+
+.navbar-logo img {
+    max-height: 40px; 
+    margin-top: 10px;
+}
+
+.navbar-links {
+    list-style-type: none;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.navbar-links li {
+    margin-left: 100px;
+    font-size: 3rem;
+}
+
+.navbar-links li:last-child {
+    margin-right: 0; /* Remove margin from last link */
+}
+
+.navbar-links li a {
+    color: #fff; /* White text color for links */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.navbar-links li a:hover {
+    color: #4682b4; /* Darker sky blue on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        margin-top: 10px;
+    }
+
+    .navbar-logo {
+        margin-bottom: 10px;
+    }
+
+    .navbar-links {
+        margin-right: 20px;
+    }
+
+    .navbar-links li {
+        margin-left: 20px;
+        margin-top: -50px;
+    }
+
+    h1 {
+        margin-left: 0;
+    }
+}

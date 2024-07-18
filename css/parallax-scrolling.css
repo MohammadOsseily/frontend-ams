@@ -1,0 +1,65 @@
+section.tqkn-content:last-child {
+    margin-bottom: 0;
+}
+section.tqkn-content {
+    padding: 40px 0;
+    text-align: center;
+}
+section.tqkn-container h2 {
+    margin-bottom: 40px;
+    font-family: "League Gothic";
+    font-size: 30px;
+}
+
+section.tqkn-container p:last-child {
+    margin-bottom: 0;
+}
+
+section.tqkn-container p {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+section.tqkn-parallax {
+    max-height: 600px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+section.tqkn-parallax h1 {
+    color: rgba(255,255,255,0.7);
+    font-size: 64px;
+    line-height: 600px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+section.tqkn-parallax-1 {
+    background-image: url("../assets/images/plane.jpg");
+}
+section.tqkn-parallax-2 {
+    background-image: url("../assets/images/accommodation.jpg");
+}
+section.tqkn-parallax-3 {
+    background-image: url("../assets/images/taxi.jpg");
+}
+@media all and (min-width: 600px){
+    section.tqkn-container h2 {
+        font-size: 42px;
+    }
+    section.tqkn-container p {
+        font-size: 20px;
+    }
+    section.tqkn-parallax h1 {
+        font-size: 96px;
+    }
+}
+@media all and (min-width: 1024px) {
+    section.tqkn-parallax h1 {
+        font-size: 160px;
+    }
+}

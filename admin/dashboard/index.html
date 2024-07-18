@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    
+    
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="/admin//dashboard//index.html">Manage Users</a></li>
+            <li><a href="/admin/taxi/index.html">Manage Taxi</a></li>
+            <li><a href="/admin/airport/index.html">Mange Airport</a></li>
+            <li><a href="/admin//hotel/read.html">Mange Hotels</a></li>
+            <li><a href="/admin//flight/read.html">Mange Flights</a></li>
+            <li><a href="#" id="logoutButton">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Manage Users</h1>
+        <button id="createUserButton">Create User</button>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Create User Modal -->
+    <div id="createUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCreateModal">&times;</span>
+            <h2>Create User</h2>
+            <form id="createUserForm">
+                <label for="create-username">Username:</label>
+                <input type="text" id="create-username" name="username" required>
+                <label for="create-password">Password:</label>
+                <input type="password" id="create-password" name="password" required>
+                <label for="create-email">Email:</label>
+                <input type="email" id="create-email" name="email" required>
+                <label for="create-first-name">First Name:</label>
+                <input type="text" id="create-first-name" name="first_name" required>
+                <label for="create-last-name">Last Name:</label>
+                <input type="text" id="create-last-name" name="last_name" required>
+                <label for="create-role">Role:</label>
+                <input type="text" id="create-role" name="role" required>
+                <button type="submit">Create User</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update User Modal -->
+    <div id="updateUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeUpdateModal">&times;</span>
+            <h2>Update User</h2>
+            <form id="updateUserForm">
+                <input type="hidden" id="update-id" name="id">
+                <label for="update-username">Username:</label>
+                <input type="text" id="update-username" name="username" required>
+                <label for="update-password">Password:</label>
+                <input type="password" id="update-password" name="password">
+                <label for="update-email">Email:</label>
+                <input type="email" id="update-email" name="email" required>
+                <label for="update-first-name">First Name:</label>
+                <input type="text" id="update-first-name" name="first_name" required>
+                <label for="update-last-name">Last Name:</label>
+                <input type="text" id="update-last-name" name="last_name" required>
+                <label for="update-role">Role:</label>
+                <input type="text" id="update-role" name="role" required>
+                <button type="submit">Update User</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="scripts.js"></script>
+    
+</body>
+</html>

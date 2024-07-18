@@ -1,0 +1,327 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#bookings-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.booking-item {
+    background-color: #87CEEB;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
+    max-width: 300px;
+    min-height: 200px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.booking-item p {
+    margin: 5px 0;
+}
+
+.booking-item button, .booking-item a {
+    background-color: white;
+    color: #87CEEB;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: flex-start;
+    margin-top: 30px;
+}
+
+.booking-item button:hover {
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 600px) {
+    .booking-item {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 700px;
+}
+
+#search-bar {
+    padding: 10px;
+    width: 70%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.button-nav {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #87CEEB;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-nav:hover {
+    background-color: #5DADE2;
+}
+
+#search-bar:focus {
+    border-color: #87CEEB; 
+    box-shadow: 0 0 5px rgba(135, 206, 235, 0.5); 
+}
+
+#flights-list, #hotels-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.flight-item, .hotel-item {
+    background-color: #87CEEB;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 80%; /* Increased width */
+    max-width: 1000px; /* Maximum width for desktop */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flight-item a, .hotel-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.flight-item a:hover, .hotel-item a:hover {
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    #search-bar {
+        width: 90%;
+    }
+
+    .flight-item, .hotel-item {
+        width: 90%;
+        max-width: none;
+        margin: 10px 5%;
+    }
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 10px;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+h1 {
+    text-align: left;
+    color: #87CEEB;
+    padding: 20px;
+    width: 100%;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.content-container {
+    background-color: #87CEEB;
+    color: white;
+    font-weight: bold;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.btn, #cancel-booking-btn {
+    background-color: white;
+    color: #87CEEB;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: #87CEEB;
+    margin: 10px;
+}
+
+@media (max-width: 600px) {
+    .content-container {
+        width: 90%;
+        margin: 10px 5%;
+    }
+    
+    .booking-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+#hotelBookingForm {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#hotelBookingForm input[type="date"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #87ceeb; /* Sky blue border */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#hotelBookingForm input[type="date"]:focus {
+    outline: none; /* Remove focus outline */
+    border-color: #4682b4; /* Darker sky blue when focused */
+}
+
+#hotelBookingForm input[type="date"]::placeholder {
+    color: #87ceeb; /* Light sky blue placeholder text */
+}
+
+#hotelBookingForm input[type="submit"] {
+    background-color: #87ceeb; /* Sky blue background for submit button */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#hotelBookingForm input[type="submit"]:hover {
+    background-color: #5f9ea0; /* Darker sky blue on hover */
+}
+
+
+header {
+    background-color: #87ceeb;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 100px;
+}
+
+.navbar-logo img {
+    max-height: 40px; 
+    margin-top: 10px;
+}
+
+.navbar-links {
+    list-style-type: none;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.navbar-links li {
+    margin-left: 100px;
+    font-size: 3rem;
+}
+
+.navbar-links li:last-child {
+    margin-right: 0; /* Remove margin from last link */
+}
+
+.navbar-links li a {
+    color: #fff; /* White text color for links */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.navbar-links li a:hover {
+    color: #4682b4; /* Darker sky blue on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links {
+        margin-top: 10px;
+    }
+
+    .navbar-logo {
+        margin-bottom: 10px;
+    }
+
+    .navbar-links {
+        margin-right: 20px;
+    }
+
+    .navbar-links li {
+        margin-left: 20px;
+        margin-top: -50px;
+    }
+
+    h1 {
+        margin-left: 0;
+    }
+}

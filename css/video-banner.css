@@ -1,0 +1,116 @@
+#tqkn-banner {
+    position: relative;
+    margin-top: 50px;
+    overflow: hidden;
+    height: 337.5px;
+}
+#tqkn-banner-video {
+    position: absolute;
+    width: 600px;
+    height: auto;
+    z-index: 1;
+}
+#tqkn-banner-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    text-align: center;
+}
+#tqkn-banner-content h2,
+#tqkn-banner-content p,
+#tqkn-banner-content a {
+    color: azure;
+    text-shadow: -1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+#tqkn-banner-content h2 {
+    font-family: 'Building';
+    font-size: 32px;
+    text-transform: uppercase;
+}
+#tqkn-banner-content p {
+    font-family: "Moon Light";
+    font-size: 16px;
+}
+#tqkn-banner-content a {
+    font-family: sans-serif;
+    font-size: 14px;
+    padding: 4px 10px;
+    margin-top: 200px;
+    display: inline-block;
+    color: #fff;
+    background-color: rgba(62, 189, 253, 0.7);
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s, text-shadow 0.3s;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#tqkn-banner-content a:hover {
+    /*    background-color: rgb(61, 153, 145);*/
+    background-color: rgb(255, 80, 100);
+/*
+    -webkit-filter: blur(0.8px);
+    filter: blur(0.8px);
+*/
+    color: #fff;
+    text-shadow: none;
+}
+@media all and (min-width: 600px) {
+    #tqkn-banner {
+        height: 576px;
+    }
+    #tqkn-banner-video {
+        width: 1024px;
+    }
+    #tqkn-banner-content a {
+        font-size: 18px;
+        margin-top: 360px;
+    }
+    #tqkn-banner-content h2 {
+        font-size: 48px;
+    }
+    #tqkn-banner-content p {
+        font-size: 24px;
+    }
+}
+@media all and (min-width: 1024px) {
+    #tqkn-banner {
+        height: 720px;
+    }
+    #tqkn-banner-video {
+        width: 1280px;
+    }
+    #tqkn-banner-content a {
+        font-size: 25px;
+        margin-top: 480px;
+    }
+    #tqkn-banner-content h2 {
+        font-size: 62px;
+    }
+    #tqkn-banner-content p {
+        font-size: 32px;
+    }
+}
+@media all and (min-width: 1280px) {
+    #tqkn-banner {
+        height: 720px;
+    }
+    #tqkn-banner-video {
+        width: 1920px;
+    }
+    #tqkn-banner-content a {
+        font-size: 25px;
+        margin-top: 480px;
+    }
+    #tqkn-banner-content h2 {
+        font-size: 72px;
+    }
+    #tqkn-banner-content p {
+        font-size: 32px;
+    }
+}

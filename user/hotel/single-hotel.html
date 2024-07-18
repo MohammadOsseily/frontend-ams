@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Details</title>
+    <link rel="stylesheet" href="hotel.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script></head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-logo">
+                    <a href="/index.html"><img src="../../assets/images/airplane.png" alt="Logo"></a>
+                </div>
+                <ul class="navbar-links">
+                    <li><a href="../trip-planner/trip-planner.html">PlanTrip</a></li>
+                    <li><a href="../flight/list-of-flights.html">Flights</a></li>
+                    <li><a href="../hotel/list-of-hotels.html">Hotels</a></li>
+                    <li><a href="../taxi/list-of-taxis.html">Taxis</a></li>
+                    <li><a href="/user/auth/login.html">Login</a></li>
+                    <li><a href="/user/auth/register.html">Register</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="body">
+    <h1>Hotel Details</h1>
+    <div id="hotel-details" class="content-container">
+        <p>Hotel Not Available</p>
+    </div>
+    <div id="booking-section" class="content-container">
+        <form id="hotelBookingForm">
+            <br>Check in date: <br><input type="date" name="check_in_date" id="check_in_date" placeholder="Check-In Date" required>
+            <br>Check out date: <br><input type="date" name="check_out_date" id="check_out_date" placeholder="Check-Out Date" required>
+        </form>
+        <div id="booking-buttons" class="booking-btns">
+            <button id="book-hotel-btn" class="btn" style="display: none;">Book Hotel</button>
+            <button id="cancel-booking-btn" class="btn" style="display: none;">Cancel Booking</button>
+        </div>
+    </div>
+</div>
+    <script src="single-hotel.js"></script>
+</body>
+</html>

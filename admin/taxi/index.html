@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Taxis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="/admin//dashboard//index.html">Manage Users</a></li>
+            <li><a href="/admin/taxi/index.html">Manage Taxi</a></li>
+            <li><a href="/admin/airport/index.html">Mange Airport</a></li>
+            <li><a href="/admin//hotel/read.html">Mange Hotels</a></li>
+            <li><a href="/admin//flight/read.html">Mange Flights</a></li>
+            <li><a href="#" id="logoutButton">Logout</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Manage Taxis</h1>
+        <button id="createTaxiButton">Create Taxi</button>
+        <table id="taxiTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Company Name</th>
+                    <th>City</th>
+                    <th>Phone Number</th>
+                    <th>Price per Km</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Taxi rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Create Taxi Modal -->
+    <div id="createTaxiModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCreateTaxiModal">&times;</span>
+            <h2>Create Taxi</h2>
+            <form id="createTaxiForm">
+                <label for="create-company-name">Company Name:</label>
+                <input type="text" id="create-company-name" name="company_name" required>
+                <label for="create-city">City:</label>
+                <input type="text" id="create-city" name="city" required>
+                <label for="create-phone-number">Phone Number:</label>
+                <input type="text" id="create-phone-number" name="phone_number" required>
+                <label for="create-price-per-km">Price per Km:</label>
+                <input type="number" step="0.01" id="create-price-per-km" name="price_per_km" required>
+                <button type="submit">Create Taxi</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Taxi Modal -->
+    <div id="updateTaxiModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeUpdateTaxiModal">&times;</span>
+            <h2>Update Taxi</h2>
+            <form id="updateTaxiForm">
+                <input type="hidden" id="update-id" name="id">
+                <label for="update-company-name">Company Name:</label>
+                <input type="text" id="update-company-name" name="company_name" required>
+                <label for="update-city">City:</label>
+                <input type="text" id="update-city" name="city" required>
+                <label for="update-phone-number">Phone Number:</label>
+                <input type="text" id="update-phone-number" name="phone_number" required>
+                <label for="update-price-per-km">Price per Km:</label>
+                <input type="number" step="0.01" id="update-price-per-km" name="price_per_km" required>
+                <button type="submit">Update Taxi</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

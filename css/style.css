@@ -1,0 +1,136 @@
+@import url(video-banner.css);
+@import url(parallax-scrolling.css);
+
+/* ============================================================
+  FONTS
+============================================================ */
+
+@font-face {
+    font-family: 'Sunn';
+    src: url("/fonts/sunn/SUNN.otf");
+}
+
+@font-face {
+    font-family: 'Serendity';
+    src: url("/fonts/serendity/Serendity Script.ttf");
+}
+
+@font-face {
+    font-family: 'Composition';
+    src: url("/fonts/composition/Composition.ttf");
+}
+
+@font-face {
+    font-family: 'Moon Light';
+    src: url("/fonts/Moon/Moon Light.otf");
+}
+
+@font-face {
+    font-family: 'Oslo Bold';
+    src: url("/fonts/Oslo/Oslo_III_Bold.ttf");
+}
+
+@font-face {
+    font-family: 'League Gothic';
+    src: url("/fonts/league gothic/LeagueGothic-Regular.otf");
+}
+
+@font-face {
+    font-family: 'Building';
+    src: url("/fonts/building/Building_Typeface.ttf");
+}
+
+@font-face {
+    font-family: 'Komoda';
+    src: url("/fonts/komoda/Komoda.otf");
+}
+
+@font-face {
+    font-family: 'Adamcg';
+    src: url("/fonts/adamcg/ADAM.CG PRO.otf");
+}
+
+/* ============================================================
+  BOX SIZING & CLEARFIX
+============================================================ */
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    min-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+  BRAND & EFFECT
+============================================================ */
+
+#tqkn-brand {
+    font-family: "Adamcg";
+    font-size: 30px;
+    font-weight: bolder;
+    font-stretch: extra-expanded;
+    margin: 0px 7px 5px 0px;
+    height: 45px;
+    padding-top: 10px;
+    transition: transform 0.5s;
+}
+
+#tqkn-brand:hover {
+    transform: rotate(90deg);
+}
+
+/* ============================================================
+  FOOTER
+============================================================ */
+footer {
+    text-align: center;
+    text-emphasis-color: black;
+    text-shadow: 0 0 1px #333;
+    font-family: monospace;
+    font-size: 13px;
+    padding: 25px;
+    background-color: rgb(80,150,200);
+}
+
+/* ============================================================
+  SPLINE CSS
+============================================================ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.spline-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  spline-viewer {
+    border: none;
+    width: calc(
+      50% - 10px
+    ); /* Adjust width to fit two viewers with a 20px gap */
+    height: 500px; /* Adjust height as needed */
+  }

@@ -1,0 +1,322 @@
+/* styles.css */
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #87ceeb;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.sidebar h2 {
+  margin: 0 0 20px 0;
+}
+
+.sidebar ul {
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.sidebar ul li {
+  width: 100%;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  width: -webkit-fill-available;
+}
+
+.sidebar ul li a:hover {
+  background-color: #38b4e6;
+}
+
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  background-color: #ecf0f1;
+  flex: 1;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#flights-list .flight-item,
+#hotels-list .hotel-item {
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#flights-list .flight-item a,
+#hotels-list .hotel-item a {
+  color: #2c3e50;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+#flights-list .flight-item a:hover,
+#hotels-list .hotel-item a:hover {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px; /* Add spacing between buttons */
+}
+
+.admin-actions a {
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+}
+
+.admin-actions .add-link {
+  background-color: #3498db;
+}
+
+.admin-actions .add-link:hover {
+  background-color: #2980b9;
+}
+
+.admin-actions .update-link {
+  background-color: #3498db;
+}
+
+.admin-actions .update-link:hover {
+  background-color: #2980b9;
+}
+
+.admin-actions .delete-link {
+  background-color: #e74c3c;
+}
+
+.admin-actions .delete-link:hover {
+  background-color: #c0392b;
+}
+
+a.button-link {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+}
+
+a.button-link:hover {
+  background-color: #2980b9;
+  color: #fff; /* Keep the text color the same */
+  text-decoration: none; /* Remove underline */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static; /* Reset the fixed position for small screens */
+    padding: 10px 0; /* Adjust padding for better spacing */
+    text-align: center; /* Center align links */
+  }
+
+  .sidebar a {
+    display: block; /* Ensure links are displayed as block elements */
+    width: 100%; /* Full width for each link */
+    margin: 5px 0; /* Adjust margin for spacing between links */
+  }
+
+  .content {
+    margin-left: 0; /* Reset margin for content area */
+    padding: 10px;
+  }
+
+  #flights-list .flight-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-actions {
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+}
+
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #87ceeb; /* Sky blue color */
+  padding: 15px;
+  color: white;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.sidebar-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.sidebar-link {
+  display: block;
+  color: white;
+  font-weight: bold;
+  padding: 10px 0;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #00bfff; /* Lighter sky blue on hover */
+}
+
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  flex: 1;
+}
+
+.content-title {
+  color: #87ceeb;
+}
+
+.form {
+  max-width: 600px;
+  margin: auto;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select,
+.form-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-button {
+  background-color: #87ceeb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-button:hover {
+  background-color: #00bfff;
+}
+
+.form-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar-title {
+    display: none;
+  }
+
+  .sidebar-link {
+    display: inline-block;
+    padding: 10px 15px;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 20px;
+  }
+
+  .form {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .form-input,
+  .form-select,
+  .form-button {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-label {
+    margin: 10px 0 3px;
+  }
+
+  .form-input,
+  .form-select,
+  .form-button {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+  }
+}
