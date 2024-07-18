@@ -1,31 +1,11 @@
 const urlParams = new URLSearchParams(window.location.search);
 const flightId = urlParams.get('id');
-
-const token = localStorage.getItem('jwtToken');
-
-    let dtoken;
-
-   
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    let decodedToken = JSON.parse(jsonPayload);
-        
-    dtoken = decodedToken.data.id;
-    
-
-    let userId = dtoken;
-    
+const userId = 12; // Hardcoded user ID for now
 let departureTime;
 let capacity;
 
 function fetchFlightDetails() {
-    
     axios.get(`http://localhost/backend-ams/api/flight/read-one.php?id=${flightId}`)
-    console.log(`http://localhost/backend-ams/api/flight/read-one.php?id=${flightId}`)
         .then(response => {
             if (response.data && response.data.data) {
                 const flight = response.data.data;
@@ -64,7 +44,6 @@ function fetchFlightDetails() {
 }
 
 function checkBookingStatus() {
-    
     axios.get(`http://localhost/backend-ams/api/flight_bookings/read-one.php?user_id=${userId}&flight_id=${flightId}`)
         .then(response => {
             const bookingSection = document.getElementById('booking-section');
@@ -129,7 +108,7 @@ function bookFlight() {
         } else {
             Swal.fire({
                 title: 'Booking Failed',
-                text: `Failed to book flight. ${response.data.message}`,
+                text:` Failed to book flight. ${response.data.message}`,
                 icon: 'error',
                 confirmButtonText: 'Okay'
             });

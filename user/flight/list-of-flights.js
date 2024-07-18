@@ -31,18 +31,10 @@ function displayFlights(flights) {
 
     flights.forEach(flight => {
         const flightDiv = document.createElement('div');
-<<<<<<< HEAD
         flightDiv.classList.add('flight-item');
         flightDiv.innerHTML = `
             <a href="single-flight.html?id=${flight.id}">
                 ${flight.flight_number || 'No Flight Number'} - from ${flight.departure_airport_name || 'No Departure Airport'} to ${flight.arrival_airport_name || 'No Arrival Airport'}
-=======
-        flightDiv.innerHTML = `
-            <a href="single-flight.html?id=${flight.id}">
-                Flight Number: ${flight.flight_number || 'No Flight Number'} - 
-                Departure: ${flight.departure_time || 'No Departure Time'} from ${flight.departure_airport_name || 'No Departure Airport'} to ${flight.arrival_airport_name || 'No Arrival Airport'} - 
-                Arrival: ${flight.arrival_time || 'No Arrival Time'}
->>>>>>> 6823b01 (Adding the search functionality for the flights)
             </a>
         `;
         flightsList.appendChild(flightDiv);
